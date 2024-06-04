@@ -113,6 +113,12 @@ class MD5
         );
     }
 
+    /**
+     * This function is the same as md5(). With some extra debugging output
+     * for each block so I know what's going on inside.
+     *
+     * @param string $input The string you want to hash.
+     */
     public function hash($input)
     {
         // Shift amount. Check RFC page 10
