@@ -15,6 +15,15 @@ class MD5
         0xf4292244, 0x432aff97, 0xab9423a7, 0xfc93a039, 0x655b59c3, 0x8f0ccc92, 0xffeff47d, 0x85845dd1, 0x6fa87e4f, 0xfe2ce6e0, 0xa3014314, 0x4e0811a1, 0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391, // round 4, II
     ];
 
+    // The constants that define how much to shift.
+    // Check RFC page 10 S11-S44.
+    private const S = [
+        [7, 12, 17, 22],
+        [5, 9, 14, 20],
+        [4, 11, 16, 23],
+        [6, 10, 15, 21]
+    ];
+
     // Helper functions
     private function F($x, $y, $z)
     {
@@ -45,6 +54,7 @@ class MD5
      *
      * @param
      * @param $lengthOfSecretInBytes One character in PHP is 1 byte, check https://www.php.net/manual/en/language.types.string.php.
+     * @return The padded string including the known input.
      */
     public function padInput($knownInput, $lengthOfSecretInBytes)
     {
@@ -105,10 +115,8 @@ class MD5
 
     public function hash($input)
     {
-        // Constants for MD5
-        $s = array(
-            array(7, 12, 17, 22), array(5, 9, 14, 20), array(4, 11, 16, 23), array(6, 10, 15, 21)
-        );
+        // Shift amount. Check RFC page 10
+        $s = self::S;
 
         // 64-element table. RFC page 4.
         $K = self::K;
@@ -198,10 +206,8 @@ class MD5
         $fakeInput = "1234567890123456789012345678901234567890123456789012345678901234"; // a 512 bit input
         $fakeInput .= $newString;
 
-        // Constants for MD5
-        $s = array(
-            array(7, 12, 17, 22), array(5, 9, 14, 20), array(4, 11, 16, 23), array(6, 10, 15, 21)
-        );
+        // Shift amount. Check RFC page 10
+        $s = self::S;
 
         // 64-element table. RFC page 4.
         $K = self::K;
