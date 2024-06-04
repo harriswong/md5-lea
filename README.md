@@ -1,6 +1,6 @@
 ## Description
 
-A project demonstrate md5 length extension attack. 
+A project to demonstrate md5 length extension attack. 
 
 ## Getting Started
 Please read `index.php` for some examples. You can run this with `php index.php`.
