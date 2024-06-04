@@ -90,7 +90,7 @@ class MD5
         );
     }
 
-    public function main($input)
+    public function hash($input)
     {
         // Constants for MD5
         $s = array(
