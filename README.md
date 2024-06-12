@@ -29,7 +29,7 @@ $md5Hash = $md5->next(
 ```
 
 ## Help
-TODO: Checkout this blog post for more info.
+Checkout this blog post for more info. https://harriswong.blog/2024/06/11/learning-the-length-extension-attack/
 
 ## Authors
 
